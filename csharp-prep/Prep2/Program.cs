@@ -4,43 +4,69 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Please enter your grade percentage as a whole number ");
-        string userInput=Console.ReadLine();
-        int grade= int.Parse(userInput);
-        string letter;
-        if (grade >= 90)
+        string grade=null;
+        string sign="";
+        Console.WriteLine("Welcome to the letter grade converter");
+        Console.WriteLine("Please enter your score as a whole number");
+        int score=Convert.ToInt32(Console.ReadLine());
+        if (score<60)
+        {
+             grade="F";
+        }
+        if (score>=60)
+        {
+            grade="D";
+            if (score<63)
             {
-               // Console.WriteLine("Your grade is an A");
-                letter="A";
+                sign="-";
             }
-        else if (grade>=80)
-        {
-                 // Console.WriteLine("Your grade is a B");
-                letter="B";
+            else if (score>=67)
+            {
+                sign="+";
+            }
         }
-        else if (grade>=70)
+        if (score>=70)
         {
-                 // Console.WriteLine("Your grade is a C");
-                letter="C";
+            grade="C";
+            if (score<73)
+            {
+                sign="-";
+            }
+            else if (score>=77)
+            {
+                sign="+";
+            }
         }
-        else if (grade>=60)
+        if (score>=80)
         {
-                 // Console.WriteLine("Your grade is a D");
-                letter="D";
+            grade="B";
+            if (score<83)
+            {
+                sign="-";
+            }
+            else if (score>=87)
+            {
+                sign="+";
+            }
+        }
+        if (score>=90)
+        {
+            grade="A";
+            if(score<93)
+            {
+                sign="-";
+            }
+        }
+        Console.WriteLine($"Your letter grade is a/an {grade}{sign}");
+
+        if(score>=70)
+        {
+            Console.WriteLine("Congratulations, You passed!");
+
         }
         else 
         {
-                 // Console.WriteLine("Your grade is an F");
-                letter="F";
-        }
-        Console.WriteLine ($"Your grade is a/an {letter}");
-        if (grade >= 70)
-        {
-            Console.WriteLine ("Congratulations you passed");
-        }
-        else
-        {
-            Console.WriteLine("You were not successful this time, but don't give up!");
+            Console.WriteLine("You did not pass this time.  Keep trying");
         }
     }   
 
