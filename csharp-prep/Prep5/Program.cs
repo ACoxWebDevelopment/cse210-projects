@@ -1,36 +1,46 @@
 using System;
+using System.Reflection;
 
 class Program
 {
-    static void DisplayWelcome()
+    static void Welcome()
     {
         Console.WriteLine("Welcome to the Program!");
     }
 
-    static string PromptUserName()
+    static string GetName()
     {
         Console.Write("Please enter your name: ");
-        return Console.ReadLine();
+        string name=Console.ReadLine();
+        return name;
     }
-
-    static int PromptUserNumber()
+    static int GetNumber()
     {
         Console.Write("Please enter your favorite number: ");
-        int number = int.Parse(Console.ReadLine());
-        return number;
+        int favnum= Convert.ToInt32(Console.ReadLine());
+        return favnum;
     }
 
-    static int SquareNumber(int inputnum)
+    static int SqrNumber(int p1)
     {
-        return inputnum * inputnum;
+        int numsqrd=p1*p1;
+        return numsqrd;
     }
 
-    static void Main()
+    static void DisplayMessage(string username, int squared)
     {
-        DisplayWelcome();
-        string alias = PromptUserName();
-        int favnum = PromptUserNumber();
-        int numsquared = SquareNumber(favnum);
-        Console.WriteLine($"{alias}, your number squared is {numsquared}");
+        Console.WriteLine($"{username}, the square of your number is {squared}");
     }
+
+    static void Main(string[] args)
+    {
+        Welcome();
+        string username=GetName();
+        int usernumber=GetNumber();
+        int squared=SqrNumber(usernumber);
+        DisplayMessage(username, squared);
+
+    }
+    
+    
 }
