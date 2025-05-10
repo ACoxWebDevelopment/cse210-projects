@@ -1,14 +1,15 @@
 public class Resume
 {
-    public List <Job> _jobs = new List<Job>();
     public string _name;
-    public void Display()
+    public List<Job> myJobs = new List<Job>();
+
+    public void DisplayResume()
     {
-        Console.WriteLine($"Name: {_name}");
+        Console.WriteLine(_name);
         Console.WriteLine("Jobs:");
-        foreach (Job job in _jobs)
+        foreach (Job i in myJobs)
         {
-            job.Display();
+            i.DisplayJob(); //because i is a datatype Job it has access to the DisplayJob method
         }
-    }
+    }   
 }
