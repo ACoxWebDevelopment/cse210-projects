@@ -2,61 +2,67 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualBasic;
 using System.IO;
+using System.Xml.Serialization;
 
 class Program
 {
-    
-     
-         
-    
+
+
+
+
     static void Main(string[] args)
+    
+
     {
         
-
-        
-
+        string choice = "";
         Journal myJournal = new Journal();
-        Entry journalEntry = new Entry();
-
-        
-        //Console.WriteLine("Hello Develop02 World!");
-        string menu="";
-        while (menu !="q")
+        PromptGenerator promptGenerator = new PromptGenerator();
+        while (choice != "5")
         {
-            Console.WriteLine ("Welcome to the journaling program");
-            Console.WriteLine ("What would you like to do?  Please choose one of the following");
-            Console.WriteLine ("1. Write");
-            Console.WriteLine ("2. Display");
-            Console.WriteLine ("3. Load");
-            Console.WriteLine ("4. Save");
-            Console.WriteLine ("q for quit");
-            menu = Console.ReadLine();
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
 
-            if (menu == "1")
+            Console.Write("What would you like to do? ");
+            choice = Console.ReadLine();
+
+            if (choice == "1")
             {
+
+                string aprompt = promptGenerator.GeneratePrompt();
+                Console.WriteLine($"{aprompt}");
+                string promptResponse = Console.ReadLine();
+
+
+                Entry myEntry = new Entry();
                 
-                myJournal.AddEntry(journalEntry);
-                Console.WriteLine($"{myJournal._entries}");
+                myEntry._date = DateTime.Now.ToShortDateString();
+                myEntry._promptText = aprompt;
+                myEntry._entryText = promptResponse;
                 
+                myEntry.DisplayEntry();
+                myJournal.AddEntry(myEntry);
             }
-            else if (menu == "2")
+            if (choice == "2")
             {
-                myJournal.DisplayEntry(journalEntry);
-                Console.WriteLine("Press enter to continue");
-                Console.Read();
+                myJournal.DisplayAll();
             }
-
-            else if (menu == "3")
+            if (choice == "3")
             {
-                string myFile= "my1stjournal.txt";
-                myJournal.LoadFromFile(myFile);
+                Console.WriteLine("Please Enter a filename");
+                string fylename = Console.ReadLine();
+                myJournal.LoadFromFile(fylename);
             }
-
-            else if (menu == "4")
-            {
-                myJournal.SaveToFile(journalEntry);
-            }
-        }                
-             
+            if (choice == "4")
+                {
+                    Console.WriteLine("Please Enter a filename: ");
+                    string fylename = Console.ReadLine();
+                    myJournal.SaveToFile(fylename);
+                }
+        }
+        Console.WriteLine("Thank-You for using the Journal Program.");
     }
 }
