@@ -11,6 +11,9 @@ class Program
 
         Console.WriteLine("Hello Foundation3 World!");
         List<Activity> activities = new List<Activity>();
+        activities.Add(running);
+        activities.Add(exerciseBicycle);
+        activities.Add(lapSwimming);
         foreach (Activity activity in activities)
         {
             activity.GetSummary();
