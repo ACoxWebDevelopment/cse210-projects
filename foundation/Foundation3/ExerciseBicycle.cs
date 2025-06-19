@@ -1,10 +1,10 @@
 public class ExerciseBicycle : Activity
 {
-    public ExerciseBicycle(int distance, int speed, int pace)
+    public ExerciseBicycle( float speed, float time)
     {
-        _distance = distance;
+        _distance = speed * time;
         _speed = speed;
-        _pace = pace;
+        _pace = time/_distance;
     }
 
     public override float GetDistance()

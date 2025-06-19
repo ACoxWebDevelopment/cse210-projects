@@ -7,7 +7,7 @@ public abstract class Activity
 
     public string GetSummary()
     {
-        return ($"{DateTime.Today} {GetType().Name} ({_time} min) {GetDistance()} kilometers, Speed {60/_pace} km/h Pace{_pace} min/km");
+        return ($"{DateTime.Today} {GetType().Name} ({_time} min) {GetDistance()} kilometers, Speed {_speed} km/h Pace{_pace} min/km");
     }
     public abstract float GetDistance();
 

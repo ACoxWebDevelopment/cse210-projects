@@ -1,10 +1,10 @@
 public class Running : Activity
 {
-    public Running(int distance, int speed, int pace, int time)
+    public Running(float distance, float time)
     {
         _distance = distance;
-        _speed = speed;
-        _pace = pace;
+        _speed = (distance / time) * 60;
+        _pace = time/distance;
         _time = time;
     }
 
